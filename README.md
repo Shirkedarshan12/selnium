@@ -14,5 +14,11 @@ driver.maximize_window()
 
 driver.find_element(By.ID,"userName").send_keys("dshirke")
 driver.find_element(By.ID,"password").send_keys("12345")
-driver.find_element(By.XPATH, "//button*[@id='login']").click()
+driver.find_element(By.XPATH, "//button[@id='login']").click()
+
+if driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/form/div[5]/div/p").is_displayed():
+    print("Test Passed")
+
+else:
+    print("Failed")
 
