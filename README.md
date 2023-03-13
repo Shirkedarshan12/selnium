@@ -1,17 +1,21 @@
-# selnium
-
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-serv_obj = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
-options= webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
+def test_selenium_demo():
+    options= webdriver.ChromeOptions()
+    options.add_experimental_option("detach", True)
 
-driver = webdriver.Chrome(options=options,service=serv_obj)
+    driver =webdriver.Chrome(options=options)
+    driver.get("https://www.facebook.com")
+    element=driver.find_elements(By.ID,"email")
+    element.clear()
+    element.send_keys("Test@gmail.com")
 
-driver.get ("https://www.facebook.com/")
+    element_pass = driver.find_element(By.ID, "pass")
+    element_pass.clear()
+    element_pass.send_keys("Password")
 
-driver.find_elements(By.NAME,"email").send_keys("dshirke802@gmail.com")
-driver.find_elements(By.ID,"pass").send_keys("12345")
-driver.find_element(By.NAME, "login").click()
+    login_button_element= driver.find_element(By.NAME, "login")
+    login_button_element.click()
+
+test_selenium_demo()
